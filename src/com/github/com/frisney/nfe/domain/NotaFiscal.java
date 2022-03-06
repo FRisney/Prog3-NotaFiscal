@@ -1,4 +1,4 @@
-package nfe;
+package com.github.com.frisney.nfe.domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class NotaFiscal {
 		this.data = data;
 		this.cliente = cliente;
 		this.emissor = emissor;
-		this.produtos = new ArrayList<Produto>();
+		this.produtos = new ArrayList<>();
 	}
 	public void adicionaProduto(Produto produto) {
 		this.produtos.add(produto);

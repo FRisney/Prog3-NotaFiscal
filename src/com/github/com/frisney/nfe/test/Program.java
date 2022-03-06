@@ -1,11 +1,15 @@
-package nfe;
+package com.github.com.frisney.nfe.test;
+
+import com.github.com.frisney.nfe.domain.Cliente;
+import com.github.com.frisney.nfe.domain.Emissor;
+import com.github.com.frisney.nfe.domain.NotaFiscal;
+import com.github.com.frisney.nfe.domain.Produto;
 
 import java.time.LocalDate;
 
 public class Program {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Emissor emissor = new Emissor("nome emissor","cnpj");
 		Cliente cli = new Cliente("documento","nome");
 		LocalDate data = LocalDate.now();

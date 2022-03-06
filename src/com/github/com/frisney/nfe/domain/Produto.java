@@ -1,4 +1,4 @@
-package nfe;
+package com.github.com.frisney.nfe.domain;
 
 public class Produto {
 	private int id;

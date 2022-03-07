@@ -1,11 +1,10 @@
 package com.github.com.frisney.nfe.test;
 
-import com.github.com.frisney.nfe.domain.Cliente;
-import com.github.com.frisney.nfe.domain.Emissor;
-import com.github.com.frisney.nfe.domain.NotaFiscal;
-import com.github.com.frisney.nfe.domain.Produto;
+import com.github.com.frisney.nfe.domain.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Program {
 
@@ -13,10 +12,20 @@ public class Program {
 		Emissor emissor = new Emissor("nome emissor","cnpj");
 		Cliente cli = new Cliente("documento","nome");
 		LocalDate data = LocalDate.now();
-		NotaFiscal nf = new NotaFiscal("numero","chave",data,cli,emissor);
-		nf.adicionaProduto(new Produto(1,"produto 1","produto 1",10.0f,2));
-		nf.adicionaProduto(new Produto(2,"produto 2","produto 2",10.0f,2));
-		nf.adicionaProduto(new Produto(3,"produto 3","produto 3",10.0f,2));
+		List<Produto> prods = new ArrayList<>();
+		prods.add(new Produto(1,"produto 1","produto 1",10.0f,2));
+		prods.add(new Produto(2,"produto 2","produto 2",10.0f,2));
+		prods.add(new Produto(3,"produto 3","produto 3",10.0f,2));
+		NotaFiscalBuilder nfb = new NotaFiscalBuilder();
+		nfb.setChave("chave");
+		nfb.setNumero("numero");
+		nfb.setData(data);
+		nfb.setEmissor(emissor);
+		nfb.setCliente(cli);
+		nfb.setProdutos(prods);
+		NotaFiscal nf = nfb.gera();
+		System.out.println(nf.getProdutos().get(0).getDescricao());
+		System.out.println(nf.getProdutos().get(1).getDescricao());
 		System.out.println(nf.getProdutos().get(2).getDescricao());
 	}
 

@@ -1,18 +1,28 @@
 package com.github.com.frisney.nfe.domain;
 
+import com.github.com.frisney.nfe.domain.exceptions.ProdutoCodigoTamanhoInvalidoException;
+import com.github.com.frisney.nfe.domain.exceptions.ProdutoValorZeroException;
+
+import java.math.BigDecimal;
+
 public class Produto {
-	private int id;
+	private static final Integer CODIGO_MIN_LENGTH = 5;
+	private Integer id;
 	private String nome;
 	private String descricao;
-	private float valor;
-	private int quant;
+	private BigDecimal valor;
+	private Integer quant;
 
-	public Produto(int id, String nome, String descricao, float valor, int quant) {
+	public Produto(Integer id, String nome, String descricao, BigDecimal valor, Integer quant) {
 		super();
-		setId(id);
-		setNome(nome);
-		setDescricao(descricao);
-		setValor(valor);
+		try {
+			setId(id);
+			setNome(nome);
+			setDescricao(descricao);
+			setValor(valor);
+		} catch (ProdutoValorZeroException | ProdutoCodigoTamanhoInvalidoException e) {
+			e.printStackTrace();
+		}
 		setQuant(quant);
 	}
 
@@ -20,7 +30,11 @@ public class Produto {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) throws ProdutoCodigoTamanhoInvalidoException {
+		if (id.toString().length() < CODIGO_MIN_LENGTH){
+			this.id = Integer.parseInt(Formatter.padLeft(id.toString(),CODIGO_MIN_LENGTH));
+			throw new ProdutoCodigoTamanhoInvalidoException();
+		}
 		this.id = id;
 	}
 
@@ -40,11 +54,14 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public float getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(float valor) {
+	public void setValor(BigDecimal valor) throws ProdutoValorZeroException {
+		if (valor.equals(BigDecimal.ZERO)){
+			throw new ProdutoValorZeroException();
+		}
 		this.valor = valor;
 	}
 

@@ -25,8 +25,7 @@ public class NotaFiscalFluentBuilder implements INotaFiscalFluentBuilder {
 
     @Override
     public NotaFiscal gera() {
-        NotaFiscal nf = new NotaFiscal(numero, chave, data, cliente, emissor);
-        nf.setProdutos(this.produtos);
+        NotaFiscal nf = new NotaFiscal(numero, chave, data, cliente, emissor,produtos);
         return nf;
     }
     @Override

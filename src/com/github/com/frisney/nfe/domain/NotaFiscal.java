@@ -1,10 +1,16 @@
 package com.github.com.frisney.nfe.domain;
 
+import com.github.com.frisney.nfe.domain.exceptions.ChaveTamanhoInvalidoException;
+import com.github.com.frisney.nfe.domain.exceptions.ListaProdutosVaziaException;
+import com.github.com.frisney.nfe.domain.exceptions.NumeroTamanhoInvalidoException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotaFiscal {
+	private static final int CHAVE_LENGTH = 44;
+	private static final int NUMERO_LENGTH = 9;
 	private String numero;
 	private String chave;
 	private LocalDate data;
@@ -15,13 +21,22 @@ public class NotaFiscal {
 	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
+	public void setNumero(String numero) throws NumeroTamanhoInvalidoException {
+		if (numero.length() > NUMERO_LENGTH) {
+			throw new NumeroTamanhoInvalidoException();
+		}
 		this.numero = numero;
 	}
 	public String getChave() {
 		return chave;
 	}
-	public void setChave(String chave) {
+	public void setChave(String chave) throws ChaveTamanhoInvalidoException {
+		if (chave.length() > CHAVE_LENGTH) {
+			throw new ChaveTamanhoInvalidoException();
+		}
+		if (chave.length() < CHAVE_LENGTH) {
+			chave = Formatter.padRight(chave,CHAVE_LENGTH);
+		}
 		this.chave = chave;
 	}
 	public LocalDate getData() {
@@ -45,19 +60,27 @@ public class NotaFiscal {
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
-	public void setProdutos(List<Produto> produtos) {
+	public void setProdutos(List<Produto> produtos) throws ListaProdutosVaziaException {
+		if (produtos.isEmpty()){
+			throw new ListaProdutosVaziaException();
+		}
 		this.produtos = produtos;
 	}
-	public NotaFiscal(String numero, String chave, LocalDate data, Cliente cliente, Emissor emissor) {
+	public NotaFiscal(String numero, String chave, LocalDate data, Cliente cliente, Emissor emissor,List<Produto> produtos) {
 		super();
-		setNumero(numero);
-		setChave(chave);
-		setData(data);
-		setCliente(cliente);
-		setEmissor(emissor);
-		setProdutos(new ArrayList<>());
-	}
-	public void adicionaProduto(Produto produto) {
-		this.produtos.add(produto);
+		try {
+			setNumero(numero);
+			setChave(chave);
+			setData(data);
+			setCliente(cliente);
+			setEmissor(emissor);
+			setProdutos(produtos);
+		} catch (ChaveTamanhoInvalidoException e) {
+			e.printStackTrace();
+		} catch (NumeroTamanhoInvalidoException e) {
+			e.printStackTrace();
+		} catch (ListaProdutosVaziaException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -18,9 +18,8 @@ public class Emissor {
 	}
 
 	public Emissor(String nome, String cnpj) {
-		super();
-		this.nome = nome;
-		this.cnpj = cnpj;
+		setNome(nome);
+		setCnpj(cnpj);
 	}
 
 }

@@ -18,9 +18,8 @@ public class Cliente {
 	}
 	
 	public Cliente(String documento, String nome) {
-		super();
-		this.documento = documento;
-		this.nome = nome;
+		setDocumento(documento);
+		setNome(nome);
 	}
 	
 

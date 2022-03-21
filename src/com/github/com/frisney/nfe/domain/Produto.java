@@ -9,11 +9,11 @@ public class Produto {
 
 	public Produto(int id, String nome, String descricao, float valor, int quant) {
 		super();
-		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.valor = valor;
-		this.quant = quant;
+		setId(id);
+		setNome(nome);
+		setDescricao(descricao);
+		setValor(valor);
+		setQuant(quant);
 	}
 
 	public int getId() {

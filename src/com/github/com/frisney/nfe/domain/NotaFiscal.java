@@ -50,12 +50,12 @@ public class NotaFiscal {
 	}
 	public NotaFiscal(String numero, String chave, LocalDate data, Cliente cliente, Emissor emissor) {
 		super();
-		this.numero = numero;
-		this.chave = chave;
-		this.data = data;
-		this.cliente = cliente;
-		this.emissor = emissor;
-		this.produtos = new ArrayList<>();
+		setNumero(numero);
+		setChave(chave);
+		setData(data);
+		setCliente(cliente);
+		setEmissor(emissor);
+		setProdutos(new ArrayList<>());
 	}
 	public void adicionaProduto(Produto produto) {
 		this.produtos.add(produto);

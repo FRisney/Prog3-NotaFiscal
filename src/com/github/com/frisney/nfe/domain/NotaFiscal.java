@@ -69,18 +69,22 @@ public class NotaFiscal {
 	public NotaFiscal(String numero, String chave, LocalDate data, Cliente cliente, Emissor emissor,List<Produto> produtos) {
 		super();
 		try {
-			setNumero(numero);
 			setChave(chave);
-			setData(data);
-			setCliente(cliente);
-			setEmissor(emissor);
-			setProdutos(produtos);
 		} catch (ChaveTamanhoInvalidoException e) {
 			e.printStackTrace();
+		}
+		try {
+			setNumero(numero);
 		} catch (NumeroTamanhoInvalidoException e) {
 			e.printStackTrace();
+		}
+		try {
+			setProdutos(produtos);
 		} catch (ListaProdutosVaziaException e) {
 			e.printStackTrace();
 		}
+		setData(data);
+		setCliente(cliente);
+		setEmissor(emissor);
 	}
 }

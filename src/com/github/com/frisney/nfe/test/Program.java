@@ -8,7 +8,15 @@ import java.math.BigDecimal;
 public class Program {
 
 	public static void main(String[] args) {
-		NotaFiscal nf = NotaFiscalFluentBuilder.builder()
+		NotaFiscal nf1 = NotaFiscalFluentBuilder.builder()
+				.setChave("chavmassa")
+				.setNumero("12356789")
+				.setData(LocalDate.now())
+				.setEmissor(new Emissor("nome emissor","cnpj"))
+				.setCliente(new Cliente("documento","nome"))
+				.gera();
+
+		NotaFiscal nf2 = NotaFiscalFluentBuilder.builder()
 			.setChave("chave")
 			.setNumero("nmr")
 			.setData(LocalDate.now())
@@ -19,9 +27,10 @@ public class Program {
 			.addProduto(new Produto(3,"produto 3","produto 3", new BigDecimal(10.0f),2))
 			.gera();
 
-		System.out.println(nf.getProdutos().get(2).getDescricao());
-		System.out.println(nf.getProdutos().get(1).getDescricao());
-		System.out.println(nf.getProdutos().get(0).getDescricao());
+		System.out.println(nf1.getChave());
+		System.out.println(nf2.getProdutos().get(2).getDescricao());
+		System.out.println(nf2.getProdutos().get(1).getDescricao());
+		System.out.println(nf2.getProdutos().get(0).getDescricao());
 	}
 
 }

@@ -1,10 +1,11 @@
 package com.github.com.frisney.nfe.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="clientes")
-public class Cliente {
+public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")

@@ -3,16 +3,24 @@ package com.github.com.frisney.nfe.domain;
 import com.github.com.frisney.nfe.domain.exceptions.ProdutoCodigoTamanhoInvalidoException;
 import com.github.com.frisney.nfe.domain.exceptions.ProdutoValorZeroException;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Produto {
+@Entity
+@Table(name="produtos")
+public class Produto implements Serializable {
 	private static final Integer CODIGO_MIN_LENGTH = 5;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
 	private String nome;
 	private String descricao;
 	private BigDecimal valor;
 	private Integer quant;
 
+	public Produto(){}
 	public Produto(Integer id, String nome, String descricao, BigDecimal valor, Integer quant) {
 		super();
 		try {

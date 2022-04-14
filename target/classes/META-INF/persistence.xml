@@ -11,7 +11,7 @@
         <properties>
             <!-- JPA -->
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:database.db"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:target/database.db"/>
             <!-- SE OUTRO BANCO DEVE PASSAR USUARIO E SENHA -->
             <!-- HIBERNATE -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect"/>

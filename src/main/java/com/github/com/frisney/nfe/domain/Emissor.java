@@ -1,6 +1,15 @@
 package com.github.com.frisney.nfe.domain;
 
-public class Emissor {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name="emissores")
+public class Emissor implements Serializable {
+	@javax.persistence.Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer Id;
 	private String nome;
 	private String cnpj;
 
@@ -17,6 +26,7 @@ public class Emissor {
 		this.cnpj = cnpj;
 	}
 
+	public Emissor(){}
 	public Emissor(String nome, String cnpj) {
 		setNome(nome);
 		setCnpj(cnpj);

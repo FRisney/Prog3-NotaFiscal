@@ -1,12 +1,13 @@
-package com.github.com.frisney.nfe.services;
+package com.github.com.frisney.nfe.repositories;
 
 import com.github.com.frisney.nfe.domain.Cliente;
-import com.github.com.frisney.nfe.services.interfaces.ICrudService;
+import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.com.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ClienteService implements ICrudService<Cliente,Integer> {
+public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     @Override
     public List<Cliente> all() {
         return null;
@@ -42,17 +43,27 @@ public class ClienteService implements ICrudService<Cliente,Integer> {
     }
 
     @Override
-    public Cliente update(Cliente entity) {
+    public Cliente update(Cliente cliente) {
         return null;
     }
 
     @Override
-    public void delete(Cliente entity) {
-
+    public void delete(Cliente cliente) {
+        EntityManager em = null;
+        try{
+            em = DbAccessManager.getEntityManager();
+            em.getTransaction().begin();
+            em.remove(cliente);
+            em.getTransaction().commit();
+        } finally {
+            if (em!=null) {
+                em.close();
+            }
+        }
     }
 
     @Override
     public void deleteById(Integer id) {
-
+        this.delete(this.byId(id));
     }
 }

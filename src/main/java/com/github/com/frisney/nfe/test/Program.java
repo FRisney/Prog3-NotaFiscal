@@ -1,8 +1,8 @@
 package com.github.com.frisney.nfe.test;
 
 import com.github.com.frisney.nfe.domain.*;
-import com.github.com.frisney.nfe.services.ClienteService;
-import com.github.com.frisney.nfe.services.interfaces.ICrudService;
+import com.github.com.frisney.nfe.repositories.ClienteRepository;
+import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
 
 import java.time.LocalDate;
 import java.math.BigDecimal;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Program {
 
 	public static void main(String[] args) {
-		ICrudService<Cliente,Integer> cliServ = new ClienteService();
+		IBasicRepository<Cliente,Integer> cliServ = new ClienteRepository();
 		Cliente cli1 = cliServ.byId(0);
 		if (cli1 == null) {
 			cli1 = new Cliente("documento","nome");

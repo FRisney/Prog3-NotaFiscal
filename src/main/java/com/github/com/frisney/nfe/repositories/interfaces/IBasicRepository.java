@@ -1,8 +1,8 @@
-package com.github.com.frisney.nfe.services.interfaces;
+package com.github.com.frisney.nfe.repositories.interfaces;
 
 import java.util.List;
 
-public interface ICrudService<T,K> {
+public interface IBasicRepository<T,K> {
     public List<T> all();
     public T byId(K id);
     public T insert(T entity);

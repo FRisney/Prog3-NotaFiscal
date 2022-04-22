@@ -2,14 +2,14 @@ package com.github.com.frisney.nfe.domain;
 
 import com.github.com.frisney.nfe.domain.interfaces.INotaFiscalFluentBuilder;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotaFiscalFluentBuilder implements INotaFiscalFluentBuilder {
     private String numero;
     private String chave;
-    private LocalDate data;
+    private Date data;
     private Cliente cliente;
     private Emissor emissor;
     private List<Produto> produtos = new ArrayList<>();
@@ -37,7 +37,7 @@ public class NotaFiscalFluentBuilder implements INotaFiscalFluentBuilder {
         return this;
     }
     @Override
-    public NotaFiscalFluentBuilder setData(LocalDate data) { this.data = data;
+    public NotaFiscalFluentBuilder setData(Date data) { this.data = data;
         return this;
     }
     @Override

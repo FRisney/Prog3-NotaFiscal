@@ -25,11 +25,16 @@ public class Emissor implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+	public Integer getId() {
+		return Id;
+	}
+	public void setId(Integer id) {
+		Id = id;
+	}
 
 	public Emissor(){}
 	public Emissor(String nome, String cnpj) {
 		setNome(nome);
 		setCnpj(cnpj);
 	}
-
 }

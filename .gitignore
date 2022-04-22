@@ -1,2 +1,5 @@
 /bin/
 /target/classes/
+/lib/
+/target/
+/.attach_pid*

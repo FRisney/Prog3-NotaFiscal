@@ -4,18 +4,28 @@ import com.github.com.frisney.nfe.domain.exceptions.ChaveTamanhoInvalidoExceptio
 import com.github.com.frisney.nfe.domain.exceptions.ListaProdutosVaziaException;
 import com.github.com.frisney.nfe.domain.exceptions.NumeroTamanhoInvalidoException;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-public class NotaFiscal {
+@Entity
+@Table(name="notas_fiscais")
+public class NotaFiscal implements Serializable {
 	private static final int CHAVE_LENGTH = 44;
 	private static final int NUMERO_LENGTH = 9;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
 	private String numero;
 	private String chave;
-	private LocalDate data;
+	private Date data;
+	@ManyToOne
 	private Cliente cliente;
+	@ManyToOne
 	private Emissor emissor;
+	@OneToMany
 	private List<Produto> produtos;
 
 	public String getNumero() {
@@ -39,10 +49,10 @@ public class NotaFiscal {
 		}
 		this.chave = chave;
 	}
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	public Cliente getCliente() {
@@ -66,7 +76,8 @@ public class NotaFiscal {
 		}
 		this.produtos = produtos;
 	}
-	public NotaFiscal(String numero, String chave, LocalDate data, Cliente cliente, Emissor emissor,List<Produto> produtos) {
+	public NotaFiscal(){}
+	public NotaFiscal(String numero, String chave, Date data, Cliente cliente, Emissor emissor,List<Produto> produtos) {
 		super();
 		try {
 			setChave(chave);

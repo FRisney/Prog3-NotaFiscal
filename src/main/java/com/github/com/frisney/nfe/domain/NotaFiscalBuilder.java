@@ -2,13 +2,13 @@ package com.github.com.frisney.nfe.domain;
 
 import com.github.com.frisney.nfe.domain.interfaces.INotaFiscalBuilder;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class NotaFiscalBuilder implements INotaFiscalBuilder {
     private String numero;
     private String chave;
-    private LocalDate data;
+    private Date data;
     private Cliente cliente;
     private Emissor emissor;
     private List<Produto> produtos;
@@ -23,7 +23,7 @@ public class NotaFiscalBuilder implements INotaFiscalBuilder {
     @Override
     public void setChave(String chave) { this.chave = chave; }
     @Override
-    public void setData(LocalDate data) { this.data = data; }
+    public void setData(Date data) { this.data = data; }
     @Override
     public void setCliente(Cliente cliente) { this.cliente = cliente; }
     @Override

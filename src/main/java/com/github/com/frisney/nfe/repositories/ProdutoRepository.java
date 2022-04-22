@@ -1,19 +1,19 @@
 package com.github.com.frisney.nfe.repositories;
 
-import com.github.com.frisney.nfe.domain.Cliente;
+import com.github.com.frisney.nfe.domain.Produto;
 import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
 import com.github.com.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
+public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     @Override
-    public List<Cliente> all() {
+    public List<Produto> all() {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.createQuery("from Cliente", Cliente.class).getResultList();
+            return em.createQuery("from Produto", Produto.class).getResultList();
         } finally {
             if (em!=null) {
                 em.close();
@@ -22,11 +22,11 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente byId(Integer id) {
+    public Produto byId(Integer id) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.find(Cliente.class,id);
+            return em.find(Produto.class,id);
         } finally {
             if (em!=null) {
                 em.close();
@@ -35,14 +35,18 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente insert(Cliente cliente) {
+    public Produto insert(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.persist(cliente);
+            if(produto.getId() != null){
+                em.merge(produto);
+            } else{
+                em.persist(produto);
+            }
             em.getTransaction().commit();
-            return cliente;
+            return produto;
         } finally {
             if (em!=null) {
                 em.close();
@@ -51,14 +55,14 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente update(Cliente cliente) {
+    public Produto update(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            Cliente newCliente = em.merge(cliente);
+            Produto newProduto = em.merge(produto);
             em.getTransaction().commit();
-            return newCliente;
+            return newProduto;
         } finally {
             if (em!=null) {
                 em.close();
@@ -67,12 +71,12 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public void delete(Cliente cliente) {
+    public void delete(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.remove(cliente);
+            em.remove(produto);
             em.getTransaction().commit();
         } finally {
             if (em!=null) {

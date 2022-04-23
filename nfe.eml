@@ -21,7 +21,23 @@
 		<level name="Maven: org.jvnet.staxex:stax-ex:1.8" value="project"/>
 		<level name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" value="project"/>
 		<level name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final" value="project"/>
+		<level name="Maven: javax.persistence:javax.persistence-api:2.2" value="project"/>
 		<level name="Maven: org.xerial:sqlite-jdbc:3.36.0.3" value="project"/>
 		<level name="Maven: com.github.gwenn:sqlite-dialect:0.1.0" value="project"/>
+		<level name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.23" value="project"/>
+		<level name="Maven: org.eclipse.jdt:ecj:3.12.3" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-jasper:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-servlet-api:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-juli:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-el-api:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-api:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-util-scan:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-util:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-jasper-el:8.5.23" value="project"/>
+		<level name="Maven: org.apache.tomcat:tomcat-jsp-api:8.5.23" value="project"/>
+		<level name="Maven: org.json:json:20190722" value="project"/>
 	</levels>
 </component>

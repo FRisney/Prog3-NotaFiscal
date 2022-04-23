@@ -1,19 +1,19 @@
-package com.github.com.frisney.nfe.repositories;
+package com.github.frisney.nfe.repositories;
 
-import com.github.com.frisney.nfe.domain.NotaFiscal;
-import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
-import com.github.com.frisney.nfe.services.DbAccessManager;
+import com.github.frisney.nfe.domain.Cliente;
+import com.github.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer> {
+public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     @Override
-    public List<NotaFiscal> all() {
+    public List<Cliente> all() {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.createQuery("from NotaFiscal", NotaFiscal.class).getResultList();
+            return em.createQuery("from Cliente", Cliente.class).getResultList();
         } finally {
             if (em!=null) {
                 em.close();
@@ -22,11 +22,11 @@ public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer
     }
 
     @Override
-    public NotaFiscal byId(Integer id) {
+    public Cliente byId(Integer id) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.find(NotaFiscal.class,id);
+            return em.find(Cliente.class,id);
         } finally {
             if (em!=null) {
                 em.close();
@@ -35,14 +35,14 @@ public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer
     }
 
     @Override
-    public NotaFiscal insert(NotaFiscal nota) {
+    public Cliente insert(Cliente cliente) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.persist(nota);
+            em.persist(cliente);
             em.getTransaction().commit();
-            return nota;
+            return cliente;
         } finally {
             if (em!=null) {
                 em.close();
@@ -51,14 +51,14 @@ public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer
     }
 
     @Override
-    public NotaFiscal update(NotaFiscal nota) {
+    public Cliente update(Cliente cliente) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            NotaFiscal newNotaFiscal = em.merge(nota);
+            Cliente newCliente = em.merge(cliente);
             em.getTransaction().commit();
-            return newNotaFiscal;
+            return newCliente;
         } finally {
             if (em!=null) {
                 em.close();
@@ -67,12 +67,12 @@ public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer
     }
 
     @Override
-    public void delete(NotaFiscal nota) {
+    public void delete(Cliente cliente) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.remove(nota);
+            em.remove(cliente);
             em.getTransaction().commit();
         } finally {
             if (em!=null) {

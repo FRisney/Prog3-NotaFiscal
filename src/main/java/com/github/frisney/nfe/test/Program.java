@@ -1,11 +1,11 @@
-package com.github.com.frisney.nfe.test;
+package com.github.frisney.nfe.test;
 
-import com.github.com.frisney.nfe.domain.*;
-import com.github.com.frisney.nfe.repositories.ClienteRepository;
-import com.github.com.frisney.nfe.repositories.EmissorRepository;
-import com.github.com.frisney.nfe.repositories.NotaFiscalRepository;
-import com.github.com.frisney.nfe.repositories.ProdutoRepository;
-import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.frisney.nfe.domain.*;
+import com.github.frisney.nfe.repositories.ClienteRepository;
+import com.github.frisney.nfe.repositories.EmissorRepository;
+import com.github.frisney.nfe.repositories.NotaFiscalRepository;
+import com.github.frisney.nfe.repositories.ProdutoRepository;
+import com.github.frisney.nfe.repositories.interfaces.IBasicRepository;
 
 import java.math.BigDecimal;
 import java.util.Date;

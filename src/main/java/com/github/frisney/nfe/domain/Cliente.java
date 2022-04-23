@@ -1,4 +1,4 @@
-package com.github.com.frisney.nfe.domain;
+package com.github.frisney.nfe.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,6 +31,13 @@ public class Cliente implements Serializable {
 		setDocumento(documento);
 		setNome(nome);
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Cliente{" +
+				"id=" + id +
+				", documento='" + documento + '\'' +
+				", nome='" + nome + '\'' +
+				'}';
+	}
 }

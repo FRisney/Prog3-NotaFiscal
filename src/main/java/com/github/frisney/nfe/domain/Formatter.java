@@ -1,4 +1,4 @@
-package com.github.com.frisney.nfe.domain;
+package com.github.frisney.nfe.domain;
 
 public class Formatter {
     public static String padLeft(String subject,Integer length){

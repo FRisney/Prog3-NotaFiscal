@@ -1,19 +1,19 @@
-package com.github.com.frisney.nfe.repositories;
+package com.github.frisney.nfe.repositories;
 
-import com.github.com.frisney.nfe.domain.Emissor;
-import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
-import com.github.com.frisney.nfe.services.DbAccessManager;
+import com.github.frisney.nfe.domain.Produto;
+import com.github.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
+public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     @Override
-    public List<Emissor> all() {
+    public List<Produto> all() {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.createQuery("from Emissor ", Emissor .class).getResultList();
+            return em.createQuery("from Produto", Produto.class).getResultList();
         } finally {
             if (em!=null) {
                 em.close();
@@ -22,11 +22,11 @@ public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
     }
 
     @Override
-    public Emissor byId(Integer id) {
+    public Produto byId(Integer id) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.find(Emissor.class,id);
+            return em.find(Produto.class,id);
         } finally {
             if (em!=null) {
                 em.close();
@@ -35,14 +35,18 @@ public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
     }
 
     @Override
-    public Emissor insert(Emissor emissor) {
+    public Produto insert(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.persist(emissor);
+            if(produto.getId() != null){
+                em.merge(produto);
+            } else{
+                em.persist(produto);
+            }
             em.getTransaction().commit();
-            return emissor;
+            return produto;
         } finally {
             if (em!=null) {
                 em.close();
@@ -51,14 +55,14 @@ public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
     }
 
     @Override
-    public Emissor update(Emissor emissor) {
+    public Produto update(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            Emissor newEmissor = em.merge(emissor);
+            Produto newProduto = em.merge(produto);
             em.getTransaction().commit();
-            return newEmissor;
+            return newProduto;
         } finally {
             if (em!=null) {
                 em.close();
@@ -67,12 +71,12 @@ public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
     }
 
     @Override
-    public void delete(Emissor emissor) {
+    public void delete(Produto produto) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.remove(emissor);
+            em.remove(produto);
             em.getTransaction().commit();
         } finally {
             if (em!=null) {

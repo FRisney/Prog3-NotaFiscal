@@ -1,9 +1,9 @@
-package com.github.com.frisney.nfe.domain.interfaces;
+package com.github.frisney.nfe.domain.interfaces;
 
-import com.github.com.frisney.nfe.domain.Cliente;
-import com.github.com.frisney.nfe.domain.Emissor;
-import com.github.com.frisney.nfe.domain.NotaFiscal;
-import com.github.com.frisney.nfe.domain.Produto;
+import com.github.frisney.nfe.domain.Cliente;
+import com.github.frisney.nfe.domain.Emissor;
+import com.github.frisney.nfe.domain.NotaFiscal;
+import com.github.frisney.nfe.domain.Produto;
 
 import java.util.Date;
 import java.util.List;

@@ -7,7 +7,7 @@
     <persistence-unit name="frisney-nfe">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- register class autodiscorver -->
-        <class>com.github.com.frisney.nfe.domain.Cliente</class>
+        <class>com.github.frisney.nfe.domain.Cliente</class>
         <properties>
             <!-- JPA -->
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>

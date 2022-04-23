@@ -1,7 +1,7 @@
-package com.github.com.frisney.nfe.domain;
+package com.github.frisney.nfe.domain;
 
-import com.github.com.frisney.nfe.domain.exceptions.ProdutoCodigoTamanhoInvalidoException;
-import com.github.com.frisney.nfe.domain.exceptions.ProdutoValorZeroException;
+import com.github.frisney.nfe.domain.exceptions.ProdutoCodigoTamanhoInvalidoException;
+import com.github.frisney.nfe.domain.exceptions.ProdutoValorZeroException;
 
 import javax.persistence.*;
 import java.io.Serializable;

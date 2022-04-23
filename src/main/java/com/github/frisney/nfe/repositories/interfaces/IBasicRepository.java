@@ -1,4 +1,4 @@
-package com.github.com.frisney.nfe.repositories.interfaces;
+package com.github.frisney.nfe.repositories.interfaces;
 
 import java.util.List;
 

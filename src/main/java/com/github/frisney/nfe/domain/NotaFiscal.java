@@ -1,8 +1,8 @@
-package com.github.com.frisney.nfe.domain;
+package com.github.frisney.nfe.domain;
 
-import com.github.com.frisney.nfe.domain.exceptions.ChaveTamanhoInvalidoException;
-import com.github.com.frisney.nfe.domain.exceptions.ListaProdutosVaziaException;
-import com.github.com.frisney.nfe.domain.exceptions.NumeroTamanhoInvalidoException;
+import com.github.frisney.nfe.domain.exceptions.ChaveTamanhoInvalidoException;
+import com.github.frisney.nfe.domain.exceptions.ListaProdutosVaziaException;
+import com.github.frisney.nfe.domain.exceptions.NumeroTamanhoInvalidoException;
 
 import javax.persistence.*;
 import java.io.Serializable;

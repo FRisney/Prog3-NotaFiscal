@@ -1,6 +1,6 @@
-package com.github.com.frisney.nfe.domain;
+package com.github.frisney.nfe.domain;
 
-import com.github.com.frisney.nfe.domain.interfaces.INotaFiscalBuilder;
+import com.github.frisney.nfe.domain.interfaces.INotaFiscalBuilder;
 
 import java.util.Date;
 import java.util.List;

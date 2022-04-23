@@ -1,19 +1,19 @@
-package com.github.com.frisney.nfe.repositories;
+package com.github.frisney.nfe.repositories;
 
-import com.github.com.frisney.nfe.domain.Produto;
-import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
-import com.github.com.frisney.nfe.services.DbAccessManager;
+import com.github.frisney.nfe.domain.NotaFiscal;
+import com.github.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
+public class NotaFiscalRepository implements IBasicRepository<NotaFiscal,Integer> {
     @Override
-    public List<Produto> all() {
+    public List<NotaFiscal> all() {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.createQuery("from Produto", Produto.class).getResultList();
+            return em.createQuery("from NotaFiscal", NotaFiscal.class).getResultList();
         } finally {
             if (em!=null) {
                 em.close();
@@ -22,11 +22,11 @@ public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     }
 
     @Override
-    public Produto byId(Integer id) {
+    public NotaFiscal byId(Integer id) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.find(Produto.class,id);
+            return em.find(NotaFiscal.class,id);
         } finally {
             if (em!=null) {
                 em.close();
@@ -35,18 +35,14 @@ public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     }
 
     @Override
-    public Produto insert(Produto produto) {
+    public NotaFiscal insert(NotaFiscal nota) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            if(produto.getId() != null){
-                em.merge(produto);
-            } else{
-                em.persist(produto);
-            }
+            em.persist(nota);
             em.getTransaction().commit();
-            return produto;
+            return nota;
         } finally {
             if (em!=null) {
                 em.close();
@@ -55,14 +51,14 @@ public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     }
 
     @Override
-    public Produto update(Produto produto) {
+    public NotaFiscal update(NotaFiscal nota) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            Produto newProduto = em.merge(produto);
+            NotaFiscal newNotaFiscal = em.merge(nota);
             em.getTransaction().commit();
-            return newProduto;
+            return newNotaFiscal;
         } finally {
             if (em!=null) {
                 em.close();
@@ -71,12 +67,12 @@ public class ProdutoRepository implements IBasicRepository<Produto,Integer> {
     }
 
     @Override
-    public void delete(Produto produto) {
+    public void delete(NotaFiscal nota) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.remove(produto);
+            em.remove(nota);
             em.getTransaction().commit();
         } finally {
             if (em!=null) {

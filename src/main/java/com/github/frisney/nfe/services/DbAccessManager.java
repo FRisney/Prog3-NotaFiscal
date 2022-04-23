@@ -1,4 +1,4 @@
-package com.github.com.frisney.nfe.services;
+package com.github.frisney.nfe.services;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

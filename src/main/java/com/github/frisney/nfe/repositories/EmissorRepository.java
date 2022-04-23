@@ -1,19 +1,19 @@
-package com.github.com.frisney.nfe.repositories;
+package com.github.frisney.nfe.repositories;
 
-import com.github.com.frisney.nfe.domain.Cliente;
-import com.github.com.frisney.nfe.repositories.interfaces.IBasicRepository;
-import com.github.com.frisney.nfe.services.DbAccessManager;
+import com.github.frisney.nfe.domain.Emissor;
+import com.github.frisney.nfe.repositories.interfaces.IBasicRepository;
+import com.github.frisney.nfe.services.DbAccessManager;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
+public class EmissorRepository implements IBasicRepository<Emissor,Integer> {
     @Override
-    public List<Cliente> all() {
+    public List<Emissor> all() {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.createQuery("from Cliente", Cliente.class).getResultList();
+            return em.createQuery("from Emissor ", Emissor .class).getResultList();
         } finally {
             if (em!=null) {
                 em.close();
@@ -22,11 +22,11 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente byId(Integer id) {
+    public Emissor byId(Integer id) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
-            return em.find(Cliente.class,id);
+            return em.find(Emissor.class,id);
         } finally {
             if (em!=null) {
                 em.close();
@@ -35,14 +35,14 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente insert(Cliente cliente) {
+    public Emissor insert(Emissor emissor) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.persist(cliente);
+            em.persist(emissor);
             em.getTransaction().commit();
-            return cliente;
+            return emissor;
         } finally {
             if (em!=null) {
                 em.close();
@@ -51,14 +51,14 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public Cliente update(Cliente cliente) {
+    public Emissor update(Emissor emissor) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            Cliente newCliente = em.merge(cliente);
+            Emissor newEmissor = em.merge(emissor);
             em.getTransaction().commit();
-            return newCliente;
+            return newEmissor;
         } finally {
             if (em!=null) {
                 em.close();
@@ -67,12 +67,12 @@ public class ClienteRepository implements IBasicRepository<Cliente,Integer> {
     }
 
     @Override
-    public void delete(Cliente cliente) {
+    public void delete(Emissor emissor) {
         EntityManager em = null;
         try{
             em = DbAccessManager.getEntityManager();
             em.getTransaction().begin();
-            em.remove(cliente);
+            em.remove(emissor);
             em.getTransaction().commit();
         } finally {
             if (em!=null) {

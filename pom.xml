@@ -86,7 +86,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>com.github.frisney.nfe_web.launch.Main</mainClass>
+                            <mainClass>com.github.frisney.nfe.web.launch.Main</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>

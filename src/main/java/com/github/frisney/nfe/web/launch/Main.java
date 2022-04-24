@@ -1,6 +1,5 @@
-package com.github.frisney.nfe_web.launch;
+package com.github.frisney.nfe.web.launch;
 
-import com.github.frisney.nfe_web.servlet.HomeServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
@@ -14,9 +13,7 @@ import java.io.File;
 class Main {
     public static void main(String[] args) throws ServletException, LifecycleException {
         var servletsPath = new File(
-                "src/main/java/" +
-                HomeServlet.class.getPackageName()
-                .replaceAll("\\.", "/")
+                "src/main/java/com/github/frisney/nfe"
         ).getAbsolutePath();
         System.out.println(servletsPath);
 

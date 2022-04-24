@@ -30,7 +30,7 @@ public class Program {
 		}
 		List<Produto> produtos = prodServ.all();
 		if (produtos.isEmpty()){
-			Produto prod1 = new Produto(342342,"Lol","Produto",new BigDecimal(25.0f),1);
+			Produto prod1 = new Produto(342342,"lol","produto",new BigDecimal("25.0"),1);
 			prodServ.insert(prod1);
 			produtos.add(prod1);
 		}
@@ -44,6 +44,7 @@ public class Program {
 				.gera();
 		notaServ.insert(nf1);
 		System.out.println(nf1.getProdutos().get(0).getDescricao());
+		System.out.println(nf1.getCliente().getNome());
 	}
 
 }
